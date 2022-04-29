@@ -14,8 +14,7 @@ const Character : React.FC<CharacterProps> = ( { character, updateFavourites }) 
   const characterFavourites = useContext(FavouritesContext);
 
   // Define a default in case the character doesn't have an image
-  let imageSrc = "https://static.wikia.nocookie.net/disney/images/5/51/?";
-  //"https://picsum.photos/300/200/?blur";
+  let imageSrc = "https://picsum.photos/300/200/?blur";
   if (character.imageUrl) {
     // API seems to include extra path for images so here we strip it off to fetch raw image	
     imageSrc=character.imageUrl;

@@ -17,9 +17,20 @@ const App : React.FC = () => {
   const [characterFavourites, setCharacterFavourites] = useState<Array<number>>([]);
 
   const getCharacters = async (pageNumber : number) => {
-    // Utilised Axios for API calls
-    const apiResponse = await axios.get(`http://api.disneyapi.dev/characters?page=${pageNumber}`);
-    setCharacters(apiResponse.data.data);
+    try {
+      // Utilised Axios for API calls
+      const apiResponse = await axios.get(`http://api.disneyapi.dev/characters?page=${pageNumber}`);
+      setCharacters(apiResponse.data.data);
+    } catch (error) {
+      // dunmy error character
+      const dummyCharaters:DisneyCharacter[] = [
+        {
+        "_id":0,
+        "imageUrl":"",
+        "name":"error in calling disney api"
+      }];
+      setCharacters(dummyCharaters);
+    }
   };
 
   useEffect(() => {
