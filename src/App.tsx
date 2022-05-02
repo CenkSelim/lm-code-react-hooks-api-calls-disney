@@ -42,7 +42,7 @@ const App : React.FC = () => {
         <Header currentPage={currentPage} />
         <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage}
                     useFav={useFavCharacters} setUseFav={setUseFavCharacters} />
-        <CharacterContainer characters={characters} />
+        <CharacterContainer characters={characters} useFav={useFavCharacters}/>
       </div>
     </FavouritesProvider>
   );

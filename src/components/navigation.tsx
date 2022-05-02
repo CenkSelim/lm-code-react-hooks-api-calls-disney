@@ -24,7 +24,6 @@ const Navigation : React.FC<{ currentPage: number, setCurrentPage: (page: number
     }
 
     const favPage = () => {
-        console.log(characterFavourites);
         setUseFav(!useFav);
     }
 
