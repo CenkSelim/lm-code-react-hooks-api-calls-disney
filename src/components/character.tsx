@@ -20,15 +20,17 @@ const Character : React.FC<CharacterProps> = ( { character }) => {
       imageSrc = character.imageUrl.substring(0, character.imageUrl.indexOf('/revision'));
   }
 
-  function toggleFavouriteForCharacter(characterId : number) {
-    if(!characterFavourites.includes(characterId)) {
+  function toggleFavouriteForCharacter(character : DisneyCharacter) {
+    if(!characterFavourites.some(item => item._id === character._id)) {
         // add to favourites
-        updateFavourites.setCharacterFavourites([...characterFavourites, characterId]);
+        updateFavourites.setCharacterFavourites([...characterFavourites, character]);
+        console.log(characterFavourites);
     }
     else {
       // remove from favourites
-      const updatedFavourites = characterFavourites.filter((id) => id !== characterId);
+      const updatedFavourites = characterFavourites.filter((item) => item._id !== character._id);
       updateFavourites.setCharacterFavourites(updatedFavourites);
+      console.log(characterFavourites);
     }
   }
 
@@ -37,8 +39,8 @@ const Character : React.FC<CharacterProps> = ( { character }) => {
 
       <h2>{character.name}</h2>
 
-      <div className="character-item__actions" onClick={() => toggleFavouriteForCharacter(character._id)}>
-        {!characterFavourites.includes(character._id) ? "Add to Favourites" : "Favourited"}
+      <div className="character-item__actions" onClick={() => toggleFavouriteForCharacter(character)}>
+        {!characterFavourites.some(item => item._id === character._id) ? "Add to Favourites" : "Favourited"}
       </div>
 
       <img className="character-item__img" src={imageSrc} alt={character.name} />
