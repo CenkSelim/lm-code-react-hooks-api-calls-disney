@@ -14,6 +14,7 @@ const App : React.FC = () => {
 
   const [characters, setCharacters] = useState<Array<DisneyCharacter>>([]);
 
+  const [useFavCharacters, setUseFavCharacters] = useState<boolean>(false);
   const getCharacters = async (pageNumber : number) => {
     try {
       // Utilised Axios for API calls
@@ -39,7 +40,8 @@ const App : React.FC = () => {
     <FavouritesProvider>
       <div className="page">
         <Header currentPage={currentPage} />
-        <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage}
+                    useFav={useFavCharacters} setUseFav={setUseFavCharacters} />
         <CharacterContainer characters={characters} />
       </div>
     </FavouritesProvider>

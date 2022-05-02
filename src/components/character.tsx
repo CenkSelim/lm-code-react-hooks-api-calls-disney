@@ -24,13 +24,11 @@ const Character : React.FC<CharacterProps> = ( { character }) => {
     if(!characterFavourites.some(item => item._id === character._id)) {
         // add to favourites
         updateFavourites.setCharacterFavourites([...characterFavourites, character]);
-        console.log(characterFavourites);
     }
     else {
       // remove from favourites
       const updatedFavourites = characterFavourites.filter((item) => item._id !== character._id);
       updateFavourites.setCharacterFavourites(updatedFavourites);
-      console.log(characterFavourites);
     }
   }
 
